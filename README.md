@@ -3,7 +3,7 @@
 work in progress!
 
 ## databáze cviků
-1. uživatel si vytvoří účet
+- uživatel si vytvoří účet
 2. najde si cviky podle tagů
 3. uloží si je na svém účtu
 4. naplánuje si jejich cvičení
