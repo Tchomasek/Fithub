@@ -6,14 +6,14 @@
 
 <div class='row text-center'>
   <div class='col'>
-      <h1>Welcome to Fithub</h1>
+      <h1>Welcome to Fithub search {{ search }}</h1>
   </div>
 </div>
 
 {% include 'components/search.html' %}
 
 <div class='row' id='exercises'>
-  Loading...
+  Searching...
 </div>
 
 
@@ -34,7 +34,8 @@ function formatExElement(ex){
   const method = 'GET'
   const url = '/exercises'
   const responseType = 'json'
-
+  const search = '{{search}}'
+  console.log(search)
   xhr.responseType = responseType
   xhr.open(method, url)
   xhr.onload = function() {
@@ -44,8 +45,11 @@ function formatExElement(ex){
     var i;
     for (i=0;i<listedItems.length; i++) {
       var exObj = listedItems[i]
+      console.log(exObj.tags)
+      if (exObj.tags === search) {
       var currentItem = formatExElement(exObj)
       finalExStr += currentItem
+    }
     exElement.innerHTML = finalExStr
     }
   }
@@ -55,14 +59,3 @@ function formatExElement(ex){
 
 </script>
 {% endblock content %}
-
-
-<html>
-  <body>
-    {{ x }}
-  </body>
-
-  <script>
-    const value = x
-  </script>
-</html>
