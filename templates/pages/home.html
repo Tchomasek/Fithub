@@ -19,22 +19,20 @@
 
 
 <script>
-  const exElement = document.getElementById('exercises')
-  exElement.innerHTML = ''
 
-  function LikeBtn(){
-  return "<button class='btn btn-primary'>Like</button>"
-}  
 
 function formatExElement(ex){  
-  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + ex.name + ' ' + ex.description + ' ' + ex.tags + "</p><div class btn-group>" +  LikeBtn() + '</div></div>'
+  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + '<a href="/exercises/detail/' + ex.id + '"><h1>' + ex.name + '</h1></a> ' + ex.description + ' <p>tagy: ' + ex.tags + '</p>' + '</p><div class btn-group></div></div>'
 }
 
+const exElement = document.getElementById('exercises')
+  exElement.innerHTML = ''
+  
+function loadExercises(exElement){
   const xhr = new XMLHttpRequest()
   const method = 'GET'
   const url = '/exercises'
   const responseType = 'json'
-
   xhr.responseType = responseType
   xhr.open(method, url)
   xhr.onload = function() {
@@ -51,6 +49,9 @@ function formatExElement(ex){
   }
 
   xhr.send()
+}
+
+loadExercises(exElement)
 
 
 </script>

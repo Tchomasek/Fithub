@@ -21,7 +21,7 @@ from exercises.views import (home_view, ex_detail_view, ex_list_view, search_vie
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
-    path('exercises/<int:ex_id>', ex_detail_view),
+    path('exercises/detail/<int:ex_id>', ex_detail_view),
     path('exercises', ex_list_view),
     path('search', search_view),
 ]

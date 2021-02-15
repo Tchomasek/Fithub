@@ -21,13 +21,9 @@
 <script>
   const exElement = document.getElementById('exercises')
   exElement.innerHTML = ''
-
-  function LikeBtn(){
-  return "<button class='btn btn-primary'>Like</button>"
-}  
-
-function formatExElement(ex){  
-  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + ex.name + ' ' + ex.description + ' ' + ex.tags + "</p><div class btn-group>" +  LikeBtn() + '</div></div>'
+  
+  function formatExElement(ex){  
+  return "<div class='mb-4 border' id='" + ex.id + "'><p>" + '<a href="/exercises/detail/' + ex.id + '"><h1>' + ex.name + '</h1></a> ' + ex.description + ' <p>tagy: ' + ex.tags + '</p>' + '</p><div class btn-group></div></div>'
 }
 
   const xhr = new XMLHttpRequest()
@@ -35,7 +31,6 @@ function formatExElement(ex){
   const url = '/exercises'
   const responseType = 'json'
   const search = '{{search}}'
-  console.log(search)
   xhr.responseType = responseType
   xhr.open(method, url)
   xhr.onload = function() {
@@ -45,7 +40,6 @@ function formatExElement(ex){
     var i;
     for (i=0;i<listedItems.length; i++) {
       var exObj = listedItems[i]
-      console.log(exObj.tags)
       if (exObj.tags === search) {
       var currentItem = formatExElement(exObj)
       finalExStr += currentItem
