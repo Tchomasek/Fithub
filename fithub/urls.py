@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from exercises.views import (home_view, ex_detail_view, ex_list_view, search_view)
 
@@ -25,3 +26,5 @@ urlpatterns = [
     path('exercises', ex_list_view),
     path('search', search_view),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
